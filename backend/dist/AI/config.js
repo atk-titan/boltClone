@@ -11,4 +11,8 @@ const openai = new openai_1.default({
         "HTTP-Referer": "https://github.com/OpenRouterTeam/openrouter-examples",
     },
 });
+// const openai = new OpenAI({
+//     baseURL: 'https://beta.sree.shop/v1',
+//     apiKey: process.env.CLAUDE_KEY  // Replace with your API key  
+// });
 module.exports = openai;

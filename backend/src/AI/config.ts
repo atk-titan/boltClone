@@ -8,4 +8,9 @@ const openai = new OpenAI({
     },
 });
 
+// const openai = new OpenAI({
+//     baseURL: 'https://beta.sree.shop/v1',
+//     apiKey: process.env.CLAUDE_KEY  // Replace with your API key  
+// });
+
 module.exports=openai;

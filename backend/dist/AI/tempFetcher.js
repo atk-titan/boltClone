@@ -12,6 +12,7 @@ const openai = require('./config');
 const templateFetcher = (prompt) => __awaiter(void 0, void 0, void 0, function* () {
     const response = yield openai.chat.completions.create({
         model: "deepseek/deepseek-r1:free",
+        // model: "claude-3.5-sonnet-20240620",
         messages: [{
                 role: "user",
                 content: "these is an important instruction: Return either 'node' or 'react' based on what this project should be. only return a single word either 'node' or 'react'. Do not return anything extra."
