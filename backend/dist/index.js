@@ -31,7 +31,7 @@ app.post("/template", (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
     catch (err) {
         console.log(err);
-        res.status(500).json({ msg: "something wrong with LLM" }, err);
+        res.status(500).json({ msg: "something wrong with LLM", err });
     }
 }));
 app.listen(3000, () => {

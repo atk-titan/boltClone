@@ -24,7 +24,7 @@ app.post("/template",async (req:any,res:any)=>{
     }
   }catch(err){
     console.log(err);
-    res.status(500).json({msg:"something wrong with LLM"},err);
+    res.status(500).json({msg:"something wrong with LLM",err});
   }
 });
 
