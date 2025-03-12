@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-import { getSystemPrompt } from "./prompt";
+import { getSystemPrompt, nodePrompt, reactPrompt } from "./AI/prompt";
 const templateFetcher = require('./AI/tempFetcher');
 
 const app = express();
@@ -14,11 +14,14 @@ app.post("/template",async (req:any,res:any)=>{
     const answer = await templateFetcher(prompt);
 
     if(answer!='node' && answer!='react'){
-      res.status(500).json({msg:"invalid response generated"});
+      return res.status(500).json({msg:"invalid response generated"});
     }
-
-    console.log(answer);
-    res.status(200).json({msg:answer});
+    if(answer==='node'){
+      res.status(200).json({prompts:nodePrompt});
+    }
+    else{
+      res.status(200).json({prompts:reactPrompt});
+    }
   }catch(err){
     console.log(err);
     res.status(500).json({msg:"something wrong with LLM"},err);

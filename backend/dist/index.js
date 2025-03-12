@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 require('dotenv').config();
 const express = require('express');
+const prompt_1 = require("./AI/prompt");
 const templateFetcher = require('./AI/tempFetcher');
 const app = express();
 app.use(express.json());
@@ -19,10 +20,14 @@ app.post("/template", (req, res) => __awaiter(void 0, void 0, void 0, function* 
         const prompt = req.body.prompt;
         const answer = yield templateFetcher(prompt);
         if (answer != 'node' && answer != 'react') {
-            res.status(500).json({ msg: "invalid response generated" });
+            return res.status(500).json({ msg: "invalid response generated" });
         }
-        console.log(answer);
-        res.status(200).json({ msg: answer });
+        if (answer === 'node') {
+            res.status(200).json({ prompts: prompt_1.nodePrompt });
+        }
+        else {
+            res.status(200).json({ prompts: prompt_1.reactPrompt });
+        }
     }
     catch (err) {
         console.log(err);
